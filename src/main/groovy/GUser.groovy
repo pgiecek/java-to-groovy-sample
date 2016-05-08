@@ -3,28 +3,16 @@ import groovy.transform.TypeChecked
 @TypeChecked
 class GUser implements Comparable<GUser> {
 
-    private final String firstName
+    final String firstName
 
-    private final String lastName
+    final String lastName
 
-    private final int birthYear
+    final int birthYear
 
     private GUser(Builder builder) {
         this.firstName = builder.firstName
         this.lastName = builder.lastName
         this.birthYear = builder.birthYear
-    }
-
-    String getFirstName() {
-        firstName
-    }
-
-    String getLastName() {
-        lastName
-    }
-
-    int getBirthYear() {
-        birthYear
     }
 
     static Builder builder() {
