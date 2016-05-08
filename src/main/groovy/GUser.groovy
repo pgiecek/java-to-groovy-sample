@@ -1,7 +1,7 @@
 import groovy.transform.TypeChecked
 
 @TypeChecked
-public class GUser implements Comparable<GUser> {
+class GUser implements Comparable<GUser> {
 
     private final String firstName
 
@@ -15,24 +15,24 @@ public class GUser implements Comparable<GUser> {
         this.birthYear = builder.birthYear
     }
 
-    public String getFirstName() {
+    String getFirstName() {
         return firstName
     }
 
-    public String getLastName() {
+    String getLastName() {
         return lastName
     }
 
-    public int getBirthYear() {
+    int getBirthYear() {
         return birthYear
     }
 
-    public static Builder builder() {
+    static Builder builder() {
         return new Builder()
     }
 
     @Override
-    public int compareTo(GUser o) {
+    int compareTo(GUser o) {
         if (this.is(o)) {
             return 0;
         }
@@ -46,7 +46,7 @@ public class GUser implements Comparable<GUser> {
     }
 
     @Override
-    public boolean equals(Object o) {
+    boolean equals(Object o) {
         if (this.is(o)) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -59,7 +59,7 @@ public class GUser implements Comparable<GUser> {
     }
 
     @Override
-    public int hashCode() {
+    int hashCode() {
         int result = firstName != null ? firstName.hashCode() : 0
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0)
         result = 31 * result + birthYear
@@ -67,7 +67,7 @@ public class GUser implements Comparable<GUser> {
     }
 
     @Override
-    public String toString() {
+    String toString() {
         return "GUser(" +
                 "firstName:" + firstName +
                 ", lastName:" + lastName +
@@ -75,7 +75,7 @@ public class GUser implements Comparable<GUser> {
                 ')'
     }
 
-    public static class Builder {
+    static class Builder {
 
         private String firstName
 
@@ -83,22 +83,22 @@ public class GUser implements Comparable<GUser> {
 
         private int birthYear
 
-        public Builder firstName(String firstName) {
+        Builder firstName(String firstName) {
             this.firstName = firstName
             return this
         }
 
-        public Builder lastName(String lastName) {
+        Builder lastName(String lastName) {
             this.lastName = lastName
             return this
         }
 
-        public Builder birthYear(int birthYear) {
+        Builder birthYear(int birthYear) {
             this.birthYear = birthYear
             return this
         }
 
-        public GUser build() {
+        GUser build() {
             return new GUser(this)
         }
     }
