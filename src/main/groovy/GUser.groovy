@@ -16,19 +16,19 @@ class GUser implements Comparable<GUser> {
     }
 
     String getFirstName() {
-        return firstName
+        firstName
     }
 
     String getLastName() {
-        return lastName
+        lastName
     }
 
     int getBirthYear() {
-        return birthYear
+        birthYear
     }
 
     static Builder builder() {
-        return new Builder()
+        new Builder()
     }
 
     @Override
@@ -42,7 +42,7 @@ class GUser implements Comparable<GUser> {
             return result
         }
 
-        return this.firstName.compareTo(o.firstName)
+        this.firstName.compareTo(o.firstName)
     }
 
     @Override
@@ -54,7 +54,8 @@ class GUser implements Comparable<GUser> {
 
         if (birthYear != user.birthYear) return false
         if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false
-        return lastName != null ? lastName.equals(user.lastName) : user.lastName == null
+
+        lastName != null ? lastName.equals(user.lastName) : user.lastName == null
 
     }
 
@@ -63,12 +64,13 @@ class GUser implements Comparable<GUser> {
         int result = firstName != null ? firstName.hashCode() : 0
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0)
         result = 31 * result + birthYear
-        return result
+
+        result
     }
 
     @Override
     String toString() {
-        return "GUser(" +
+        "GUser(" +
                 "firstName:" + firstName +
                 ", lastName:" + lastName +
                 ", birthYear:" + birthYear +
@@ -85,21 +87,21 @@ class GUser implements Comparable<GUser> {
 
         Builder firstName(String firstName) {
             this.firstName = firstName
-            return this
+            this
         }
 
         Builder lastName(String lastName) {
             this.lastName = lastName
-            return this
+            this
         }
 
         Builder birthYear(int birthYear) {
             this.birthYear = birthYear
-            return this
+            this
         }
 
         GUser build() {
-            return new GUser(this)
+            new GUser(this)
         }
     }
 }
