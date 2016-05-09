@@ -1,6 +1,8 @@
+import groovy.transform.ToString
 import groovy.transform.TypeChecked
 
 @TypeChecked
+@ToString(includeNames = true)
 class GUser implements Comparable<GUser> {
 
     final String firstName
@@ -54,15 +56,6 @@ class GUser implements Comparable<GUser> {
         result = 31 * result + birthYear
 
         result
-    }
-
-    @Override
-    String toString() {
-        "GUser(" +
-                "firstName:" + firstName +
-                ", lastName:" + lastName +
-                ", birthYear:" + birthYear +
-                ')'
     }
 
     static class Builder {
