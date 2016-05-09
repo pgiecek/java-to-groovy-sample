@@ -1,8 +1,10 @@
+import groovy.transform.EqualsAndHashCode
 import groovy.transform.ToString
 import groovy.transform.TypeChecked
 
 @TypeChecked
 @ToString(includeNames = true)
+@EqualsAndHashCode
 class GUser implements Comparable<GUser> {
 
     final String firstName
@@ -33,29 +35,6 @@ class GUser implements Comparable<GUser> {
         }
 
         this.firstName.compareTo(o.firstName)
-    }
-
-    @Override
-    boolean equals(Object o) {
-        if (this.is(o)) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        GUser user = (GUser) o;
-
-        if (birthYear != user.birthYear) return false
-        if (firstName != null ? !firstName.equals(user.firstName) : user.firstName != null) return false
-
-        lastName != null ? lastName.equals(user.lastName) : user.lastName == null
-
-    }
-
-    @Override
-    int hashCode() {
-        int result = firstName != null ? firstName.hashCode() : 0
-        result = 31 * result + (lastName != null ? lastName.hashCode() : 0)
-        result = 31 * result + birthYear
-
-        result
     }
 
     static class Builder {
