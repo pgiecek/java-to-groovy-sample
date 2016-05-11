@@ -1,11 +1,13 @@
 import groovy.transform.EqualsAndHashCode
+import groovy.transform.Sortable
 import groovy.transform.ToString
 import groovy.transform.TypeChecked
 
 @TypeChecked
 @ToString(includeNames = true)
 @EqualsAndHashCode
-class GUser implements Comparable<GUser> {
+@Sortable(includes = ['lastName', 'firstName'])
+class GUser {
 
     final String firstName
 
@@ -21,20 +23,6 @@ class GUser implements Comparable<GUser> {
 
     static Builder builder() {
         new Builder()
-    }
-
-    @Override
-    int compareTo(GUser o) {
-        if (this.is(o)) {
-            return 0;
-        }
-
-        int result = this.lastName.compareTo(o.lastName)
-        if (result != 0) {
-            return result
-        }
-
-        this.firstName.compareTo(o.firstName)
     }
 
     static class Builder {
